@@ -9,6 +9,7 @@
   "scripts": {
     "lint": "eslint ./src/scripts/**/*.js",
     "dev": "webpack-dev-server",
+    "server": "nodemon ./src/server index.js",
     "prod": "rimraf ./dist/* && cross-env NODE_ENV=production webpack -p"
   },
   "author": "Evgeny Kulazhskiy",
