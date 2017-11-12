@@ -49,5 +49,8 @@
     "ios": 7,
     "opera": 28,
     "safari": 7
+  },
+  "dependencies": {
+    "material-ui": "^0.19.4"
   }
 }
