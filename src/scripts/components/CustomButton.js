@@ -7,7 +7,7 @@ class CustomButton extends Component {
 		super();
 	}
 	render() {
-		const { label, type } = this.props;
+		const { label, type, onClick } = this.props;
 		const { state } = this;
 		let backgroundColor, labelStyle;
 		if (type === 'entry') {
@@ -19,10 +19,11 @@ class CustomButton extends Component {
 		}
 		return (
 			<FlatButton
+				onClick={onClick}
 				label={label}
 				backgroundColor={backgroundColor}
 				labelStyle={labelStyle}
-				style={{ marginTop: '10px', paddingBottom: 40 }}
+				style={{ marginTop: '10px', paddingBottom: 40, maxWidth: 256 }}
 			/>
 		);
 	}

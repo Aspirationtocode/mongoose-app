@@ -7,7 +7,7 @@ const cors = require('cors');
 const app = express();
 
 // connect to mongodb
-mongoose.connect('mongodb://localhost/persons', { useMongoClient: true });
+mongoose.connect('mongodb://localhost/chat', { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 // set up static files
@@ -15,6 +15,12 @@ app.use(express.static('public'));
 
 // use body-parser middleware
 app.use(bodyParser.json());
+app.use(
+	bodyParser.urlencoded({
+		extended: true,
+	}),
+);
+
 app.use(cors({ origin: '*' }));
 
 // initialize routes

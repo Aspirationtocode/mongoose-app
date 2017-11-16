@@ -29,9 +29,11 @@ class CustomTextField extends Component {
 		this.handleInputChange = this.handleInputChange.bind(this);
 	}
 	handleInputChange(event, value) {
+		const { handleChange, name } = this.props;
 		this.setState({
 			text: value,
 		});
+		handleChange(name, value);
 	}
 	render() {
 		const { text, type } = this.props;

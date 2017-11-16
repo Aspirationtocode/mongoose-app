@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 // create ninja Schema & model
-const PersonSchema = new Schema({
+const UserSchema = new Schema({
 	name: String,
+	surname: String,
 	age: Number,
-	skills: [String],
 });
 
-const Person = mongoose.model('person', PersonSchema);
+const User = mongoose.model('user', UserSchema);
 
-module.exports = Person;
+module.exports = User;
