@@ -34,7 +34,7 @@ class HelloContainer extends Component {
 				} else {
 					dispatch(changeCurrentUserData(response.data));
 				}
-				// dispatch(push('/chat'));
+				dispatch(push('/chat'));
 			});
 		}
 	}

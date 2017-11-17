@@ -28,6 +28,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import HelloContainer from './containers/HelloContainer/';
+import Chat from './containers/Chat/';
+
 import '../index.html';
 import '../styles/main.styl';
 
@@ -40,7 +42,8 @@ ReactDOM.render(
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<ConnectedRouter history={history}>
 				<Switch>
-					<Route exact path="/" component={HelloContainer} />
+					<Route exact path="/" component={Chat} />
+					<Route exact path="/chat" component={Chat} />
 				</Switch>
 			</ConnectedRouter>
 		</MuiThemeProvider>

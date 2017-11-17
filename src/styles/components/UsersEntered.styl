@@ -1,0 +1,41 @@
+.users-entered
+	background linear-gradient(60deg, #ffea60, #fff)
+	position absolute
+	top 0
+	left 0
+	width 220px
+	padding 10px
+	padding-top 30px
+	height 100vh
+	box-shadow 6px 0px 12px alpha(darken(#ffea60, 40%), .6)
+	transform translateX(-250px)
+	transition all ease .4s
+	opacity 0
+
+	&--active
+		transform translateX(0px)
+		opacity 1
+
+	&-list
+		padding 20px 0
+
+	&-user
+		background-color alpha($mainDarkColor, .9)
+		color #fff
+		padding 8px
+		padding-right 13px
+		display -webkit-flex
+		display -ms-flex
+		display flex
+		justify-content space-between
+		align-items center
+		border-radius 30px
+
+		&__name
+			font-size 16px
+			text-align right
+
+		&__time
+			font-size 13px
+			text-align right
+			color alpha(#fff, .8)
