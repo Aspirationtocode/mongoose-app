@@ -1,10 +1,10 @@
 ## mongoose-app
 
-#mongodb start:
+# mongodb start:
 `"C:\ProgramFiles\MongoDB\Server\3.4\bin\mongod.exe"`
 
-#server start
+# server start
 `yarn run server` || `npm run server`
 
-#frontend start
+# frontend start
 `yarn run dev` || `npm run dev`
