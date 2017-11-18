@@ -1,15 +1,13 @@
 import React, { Component } from 'react';
 import FlatButton from 'material-ui/FlatButton';
+
 const mainDarkColor = 'rgba(43, 43, 37, .6)';
 
 class CustomButton extends Component {
-	constructor() {
-		super();
-	}
 	render() {
 		const { label, type, onClick } = this.props;
-		const { state } = this;
-		let backgroundColor, labelStyle;
+		let backgroundColor;
+		let labelStyle;
 		if (type === 'entry') {
 			backgroundColor = mainDarkColor;
 			labelStyle = {

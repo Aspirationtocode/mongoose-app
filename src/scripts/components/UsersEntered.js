@@ -8,7 +8,9 @@ class UsersEntered extends Component {
 		const { active } = this.props;
 		const baseClasses = ['users-entered'];
 
-		active && baseClasses.push('users-entered--active');
+		if (active) {
+			baseClasses.push('users-entered--active');
+		}
 
 		return (
 			<ul className={baseClasses.join(' ')}>
