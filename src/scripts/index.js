@@ -11,6 +11,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 
 import configureReduxStore from './configureReduxStore';
+import initSocketIo from './initSocketIo';
 
 import HelloContainer from './containers/HelloContainer/';
 import Chat from './containers/Chat/';
@@ -24,6 +25,7 @@ const muiTheme = getMuiTheme({
 });
 
 const store = configureReduxStore();
+initSocketIo(store);
 
 const completeComponentToRender = (
 	<Provider store={store}>

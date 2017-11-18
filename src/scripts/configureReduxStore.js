@@ -4,13 +4,14 @@ import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
 import createHistory from 'history/createHashHistory';
 import allReducers from './reducers';
+import { chatMiddleware } from './initSocketIo';
 
 export default function configureReduxStore() {
 	const history = createHistory();
 
 	const routerMid = routerMiddleware(history);
 
-	const middleware = applyMiddleware(thunk, routerMid);
+	const middleware = applyMiddleware(thunk, chatMiddleware, routerMid);
 
 	const persistedState = localStorage.getItem('reduxState')
 		? JSON.parse(localStorage.getItem('reduxState'))
@@ -19,7 +20,7 @@ export default function configureReduxStore() {
 	const store = createStore(
 		allReducers,
 		persistedState,
-		composeWithDevTools(middleware),
+		composeWithDevTools(middleware)
 	);
 
 	store.subscribe(() => {

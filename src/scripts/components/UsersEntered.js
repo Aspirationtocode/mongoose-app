@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import CircularProgress from 'material-ui/CircularProgress';
 
@@ -15,14 +16,16 @@ class UsersEntered extends Component {
 	renderUsers(users) {
 		if (users) {
 			if (users.length) {
-				return users.map(user => (
-					<UsersEnteredUser
-						name={user.name}
-						surname={user.surname}
-						age={user.age}
-						key={user._id}
-					/>
-				));
+				return users
+					.reverse()
+					.map(user => (
+						<UsersEnteredUser
+							name={user.name}
+							surname={user.surname}
+							age={user.age}
+							key={user._id}
+						/>
+					));
 			}
 			return <CustomHeader text="Пока нет ни одного пользователя" />;
 		}
@@ -41,7 +44,11 @@ class UsersEntered extends Component {
 			<ul className={baseClasses.join(' ')}>
 				{/* <CurrentUserInfo /> */}
 				<CustomHeader text="Пользователи чата:" />
-				<ul className="users-entered-list">{this.renderUsers(users)}</ul>
+				<ul className="users-entered-list">
+					<Scrollbars style={{ height: 'calc(100vh - 130px)' }}>
+						{this.renderUsers(users)}
+					</Scrollbars>
+				</ul>
 			</ul>
 		);
 	}

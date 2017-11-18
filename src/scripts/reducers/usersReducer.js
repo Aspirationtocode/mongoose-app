@@ -11,6 +11,7 @@ const initialState = {
 const usersReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case ADD_USERS: {
+			console.log('i want to add users');
 			return assign({}, state, {
 				fetched: true,
 				fetching: false,

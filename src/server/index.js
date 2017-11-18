@@ -5,6 +5,8 @@ const cors = require('cors');
 
 // set up express app
 const app = express();
+const http = require('http').Server(app);
+const io = require('socket.io')(http);
 
 // connect to mongodb
 mongoose.connect('mongodb://localhost/chat', { useMongoClient: true });
@@ -18,7 +20,7 @@ app.use(bodyParser.json());
 app.use(
 	bodyParser.urlencoded({
 		extended: true,
-	}),
+	})
 );
 
 app.use(cors({ origin: '*' }));
@@ -27,6 +29,16 @@ app.use(cors({ origin: '*' }));
 app.use('/api', require('./routes/api'));
 
 // listen for requests
-app.listen(4000, () => {
+http.listen(4000, () => {
 	console.log('now listening for requests');
+});
+
+io.on('connection', socket => {
+	console.log('a user connected');
+	socket.on('disconnect', () => {
+		console.log('user disconnected');
+	});
+	socket.on('action', action => {
+		io.emit('action', action);
+	});
 });
