@@ -42,8 +42,8 @@ ReactDOM.render(
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<ConnectedRouter history={history}>
 				<Switch>
-					<Route exact path="/" component={Chat} />
-					<Route exact path="/chat" component={Chat} />
+					<Route exact path="/" component={HelloContainer} />
+					<Route path="/chat" component={Chat} />
 				</Switch>
 			</ConnectedRouter>
 		</MuiThemeProvider>

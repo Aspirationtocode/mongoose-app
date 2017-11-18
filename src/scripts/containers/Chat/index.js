@@ -22,6 +22,7 @@ class Chat extends Component {
 	}
 	render() {
 		const { state } = this;
+		const { currentUser } = this.props;
 		return (
 			<div className="chat">
 				<UsersEntered active={state.isUserEnteredActive} />
@@ -29,14 +30,14 @@ class Chat extends Component {
 					translated={state.isUserEnteredActive}
 					handleAdditionalButtonClick={this.handleAdditionalButtonClick}
 				/>
-				<MessageInput />
+				<MessageInput currentUser={currentUser} />
 			</div>
 		);
 	}
 }
 
 const mapStateToProps = state => ({
-	users: state.users,
+	currentUser: state.currentUser,
 });
 
 export default connect(mapStateToProps)(Chat);

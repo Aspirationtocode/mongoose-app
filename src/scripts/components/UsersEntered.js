@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import CustomHeader from './CustomHeader';
 import UsersEnteredUser from './UsersEnteredUser';
+import CurrentUserInfo from './CurrentUserInfo';
 
 class UsersEntered extends Component {
 	render() {
@@ -11,6 +12,7 @@ class UsersEntered extends Component {
 
 		return (
 			<ul className={baseClasses.join(' ')}>
+				<CurrentUserInfo />
 				<CustomHeader text="Недавно вошедшие:" />
 				<ul className="users-entered-list">
 					<UsersEnteredUser name="Евгений" surname="Кулажский" time="10:52" />

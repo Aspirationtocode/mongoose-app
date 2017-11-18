@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import TextField from 'material-ui/TextField';
 import IconButton from 'material-ui/IconButton';
 import Send from 'material-ui/svg-icons/content/send';
+import Avatar from './Avatar';
 
 const styles = {
 	hintStyle: {
@@ -18,8 +19,11 @@ const styles = {
 
 class MessageInput extends Component {
 	render() {
+		const { currentUser } = this.props;
+		const { name, surname } = currentUser;
 		return (
 			<div className="message-input">
+				<Avatar name={name} surname={surname} type="message-input" />
 				<TextField
 					hintText="Введите сообщение"
 					hintStyle={styles.hintStyle}
