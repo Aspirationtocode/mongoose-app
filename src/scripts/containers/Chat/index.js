@@ -12,7 +12,9 @@ class Chat extends Component {
 		this.state = {
 			isUserEnteredActive: false,
 		};
-		this.handleAdditionalButtonClick = this.handleAdditionalButtonClick.bind(this);
+		this.handleAdditionalButtonClick = this.handleAdditionalButtonClick.bind(
+			this,
+		);
 	}
 	handleAdditionalButtonClick() {
 		const { state } = this;

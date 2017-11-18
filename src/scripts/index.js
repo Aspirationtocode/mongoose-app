@@ -24,7 +24,11 @@ const persistedState = localStorage.getItem('reduxState')
 	? JSON.parse(localStorage.getItem('reduxState'))
 	: {};
 
-const store = createStore(allReducers, persistedState, composeWithDevTools(middleware));
+const store = createStore(
+	allReducers,
+	persistedState,
+	composeWithDevTools(middleware),
+);
 
 store.subscribe(() => {
 	const currentState = store.getState();
@@ -44,7 +48,7 @@ const muiTheme = getMuiTheme({
 	fontFamily: 'RobotoCondensedRegular',
 });
 
-ReactDOM.render(
+const completeComponentToRender = (
 	<Provider store={store}>
 		<MuiThemeProvider muiTheme={muiTheme}>
 			<ConnectedRouter history={history}>
@@ -54,7 +58,7 @@ ReactDOM.render(
 				</Switch>
 			</ConnectedRouter>
 		</MuiThemeProvider>
-	</Provider>,
-
-	document.getElementById('root'),
+	</Provider>
 );
+
+ReactDOM.render(completeComponentToRender, document.getElementById('root'));
