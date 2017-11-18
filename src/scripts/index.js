@@ -1,11 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { composeWithDevTools } from 'redux-devtools-extension';
+
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 
-import createHistory from 'history/createBrowserHistory';
+import createHistory from 'history/createHashHistory';
 import { Route, Switch } from 'react-router';
 
 import { ConnectedRouter, routerMiddleware } from 'react-router-redux';
@@ -22,12 +24,7 @@ const persistedState = localStorage.getItem('reduxState')
 	? JSON.parse(localStorage.getItem('reduxState'))
 	: {};
 
-const store = createStore(
-	allReducers,
-	persistedState,
-	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-	middleware,
-);
+const store = createStore(allReducers, persistedState, composeWithDevTools(middleware));
 
 store.subscribe(() => {
 	const currentState = store.getState();
