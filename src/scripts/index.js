@@ -18,11 +18,21 @@ const routerMid = routerMiddleware(history);
 
 const middleware = applyMiddleware(thunk, routerMid);
 
+const persistedState = localStorage.getItem('reduxState')
+	? JSON.parse(localStorage.getItem('reduxState'))
+	: {};
+
 const store = createStore(
 	allReducers,
+	persistedState,
 	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
 	middleware,
 );
+
+store.subscribe(() => {
+	const currentState = store.getState();
+	localStorage.setItem('reduxState', JSON.stringify(currentState));
+});
 
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
