@@ -1,5 +1,5 @@
 import assign from 'object-assign';
-import { START_FETCHING_USERS, ADD_USERS } from '../constants';
+import { START_FETCHING_MESSAGES, ADD_MESSAGES } from '../constants';
 
 const initialState = {
 	fetched: false,
@@ -8,16 +8,15 @@ const initialState = {
 	error: null,
 };
 
-const usersReducer = (state = initialState, action) => {
+const messagesReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case ADD_USERS: {
+		case ADD_MESSAGES: {
 			return assign({}, state, {
-				fetched: true,
-				fetching: false,
 				data: action.payload,
+				fetching: false,
 			});
 		}
-		case START_FETCHING_USERS: {
+		case START_FETCHING_MESSAGES: {
 			return assign({}, state, { fetching: true });
 		}
 		default: {
@@ -26,4 +25,4 @@ const usersReducer = (state = initialState, action) => {
 	}
 };
 
-export default usersReducer;
+export default messagesReducer;

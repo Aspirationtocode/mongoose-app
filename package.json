@@ -53,6 +53,7 @@
 		"axios": "^0.17.1",
 		"eslint-config-prettier": "^2.7.0",
 		"material-ui": "^0.19.4",
+		"moment": "^2.19.2",
 		"object-assign": "^4.1.1",
 		"prop-types": "^15.6.0",
 		"react": "15.5.3",

@@ -15,7 +15,7 @@ class ChatContainer extends Component {
 			handleExitButtonClick,
 			translated,
 		} = this.props;
-		const { currentUser } = this.props;
+		const { currentUser, messages } = this.props;
 		const baseClasses = ['chat-container'];
 
 		if (translated) {
@@ -46,7 +46,7 @@ class ChatContainer extends Component {
 						</IconButton>
 					</div>
 				</div>
-				<MessagesList />
+				<MessagesList messages={messages} currentUser={currentUser} />
 			</div>
 		);
 	}
@@ -55,6 +55,7 @@ class ChatContainer extends Component {
 const mapStateToProps = state => ({
 	users: state.users,
 	currentUser: state.currentUser,
+	messages: state.messages,
 });
 
 export default connect(mapStateToProps)(ChatContainer);

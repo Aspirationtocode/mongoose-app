@@ -7,6 +7,12 @@ const db = {
 	fetchUsers() {
 		return axios.get('http://localhost:4000/api/users');
 	},
+	postNewMessageData(messageData) {
+		return axios.post('http://localhost:4000/api/newMessage', messageData);
+	},
+	fetchMessages() {
+		return axios.get('http://localhost:4000/api/messages');
+	},
 };
 
 export default db;

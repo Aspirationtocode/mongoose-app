@@ -18,6 +18,26 @@ const styles = {
 };
 
 class MessageInput extends Component {
+	constructor() {
+		super();
+		this.state = {
+			value: '',
+		};
+		this.handleInputChange = this.handleInputChange.bind(this);
+		this.handleSendMessage = this.handleSendMessage.bind(this);
+	}
+	handleSendMessage() {
+		const { state } = this;
+		const { handleSendMessage } = this.props;
+		const messageText = state.value;
+		handleSendMessage(messageText);
+	}
+	handleInputChange(e, value) {
+		const { state } = this;
+		this.setState({
+			value,
+		});
+	}
 	render() {
 		const { currentUser } = this.props;
 		const { name, surname } = currentUser;
@@ -31,9 +51,10 @@ class MessageInput extends Component {
 					underlineFocusStyle={styles.underlineFocusStyle}
 					style={{ width: 'calc(100% - 80px)' }}
 					multiLine
+					onChange={this.handleInputChange}
 				/>
 				<div className="message-input__send">
-					<IconButton>
+					<IconButton onClick={this.handleSendMessage}>
 						<Send color="rgba(0, 0, 0, 0.6)" />
 					</IconButton>
 				</div>

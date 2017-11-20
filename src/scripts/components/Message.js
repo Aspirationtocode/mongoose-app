@@ -1,8 +1,10 @@
 import React from 'react';
+import moment from 'moment';
 import Avatar from './Avatar';
 
 export default ({ name, surname, text, date, isCurrentUserMessage }) => {
 	const baseClasses = ['message'];
+	const formattedDate = moment(date).fromNow();
 	if (isCurrentUserMessage) {
 		baseClasses.push('message--current-user');
 	}
@@ -11,7 +13,7 @@ export default ({ name, surname, text, date, isCurrentUserMessage }) => {
 			<Avatar name={name} surname={surname} type="message" />
 			<div className="message-content">
 				<div className="message-content__text">{text}</div>
-				<div className="message-content__date">{date}</div>
+				<div className="message-content__date">{formattedDate}</div>
 			</div>
 		</li>
 	);
