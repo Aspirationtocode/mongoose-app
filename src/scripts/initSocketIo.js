@@ -1,22 +1,27 @@
 import io from 'socket.io-client';
 import assign from 'object-assign';
-import { startFetchingUsers } from './actions';
 import { ADD_USERS, ADD_MESSAGES } from './constants';
 
-const socket = null;
+let socket = null;
 
-export function chatMiddleware(store) {
+export function chatMiddleware() {
 	return next => action => {
-		const { dispatch } = store;
-
-		if (action.type === ADD_USERS && !action.isSocketReaction) {
-			socket.emit('action', { type: ADD_USERS, payload: action.payload });
+		if (!action.isSocketReaction) {
+			switch (action.type) {
+				case ADD_USERS: {
+					socket.emit('action', { type: ADD_USERS, payload: action.payload });
+				}
+				case ADD_MESSAGES: {
+					socket.emit('action', {
+						type: ADD_MESSAGES,
+						payload: action.payload,
+					});
+				}
+				default: {
+					return null;
+				}
+			}
 		}
-
-		if (action.type === ADD_MESSAGES && !action.isSocketReaction) {
-			socket.emit('action', { type: ADD_MESSAGES, payload: action.payload });
-		}
-
 		return next(action);
 	};
 }

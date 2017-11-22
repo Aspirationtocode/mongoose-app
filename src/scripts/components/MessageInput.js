@@ -33,7 +33,6 @@ class MessageInput extends Component {
 		handleSendMessage(messageText);
 	}
 	handleInputChange(e, value) {
-		const { state } = this;
 		this.setState({
 			value,
 		});

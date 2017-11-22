@@ -5,7 +5,6 @@ import CircularProgress from 'material-ui/CircularProgress';
 
 import CustomHeader from './CustomHeader';
 import UsersEnteredUser from './UsersEnteredUser';
-import CurrentUserInfo from './CurrentUserInfo';
 
 class UsersEntered extends Component {
 	constructor() {
@@ -29,6 +28,7 @@ class UsersEntered extends Component {
 		}
 		return <CircularProgress />;
 	}
+
 	render() {
 		const { active } = this.props;
 		const { users } = this.props;

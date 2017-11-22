@@ -33,6 +33,7 @@ module.exports = {
 		'import/no-named-as-default': 'off',
 		'import/no-named-as-default-member': 'off',
 		indent: ['error', 'tab', { SwitchCase: 1 }],
+		'class-methods-use-this': 'off',
 		'no-tabs': 0,
 		'no-underscore-dangle': 'off',
 		'jsx-a11y/no-static-element-interactions': 'off',

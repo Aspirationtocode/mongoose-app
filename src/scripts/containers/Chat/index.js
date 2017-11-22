@@ -6,11 +6,7 @@ import UsersEntered from '../../components/UsersEntered';
 import MessageInput from '../../components/MessageInput';
 import ChatContainer from '../ChatContainer/';
 
-import {
-	startFetchingUsers,
-	startFetchingMessages,
-	postMessage,
-} from '../../actions';
+import { startFetchingUsers, startFetchingMessages } from '../../actions';
 
 import db from '../../db';
 
@@ -27,6 +23,12 @@ class Chat extends Component {
 		this.handleSendMessage = this.handleSendMessage.bind(this);
 	}
 
+	componentDidMount() {
+		const { dispatch } = this.props;
+		dispatch(startFetchingUsers(dispatch));
+		dispatch(startFetchingMessages(dispatch));
+	}
+
 	handleSendMessage(msg) {
 		const { currentUser } = this.props;
 		const { dispatch } = this.props;
@@ -37,7 +39,7 @@ class Chat extends Component {
 			date: new Date(),
 		};
 		if (msg.trim()) {
-			db.postNewMessageData(msgData).then(response => {
+			db.postNewMessageData(msgData).then(() => {
 				dispatch(startFetchingMessages(dispatch));
 			});
 		}
@@ -53,12 +55,6 @@ class Chat extends Component {
 		this.setState({
 			isUserEnteredActive: !state.isUserEnteredActive,
 		});
-	}
-
-	componentDidMount() {
-		const { dispatch } = this.props;
-		dispatch(startFetchingUsers(dispatch));
-		dispatch(startFetchingMessages(dispatch));
 	}
 
 	render() {
