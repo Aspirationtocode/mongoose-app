@@ -7,19 +7,14 @@ let socket = null;
 export function chatMiddleware() {
 	return next => action => {
 		if (!action.isSocketReaction) {
-			switch (action.type) {
-				case ADD_USERS: {
-					socket.emit('action', { type: ADD_USERS, payload: action.payload });
-				}
-				case ADD_MESSAGES: {
-					socket.emit('action', {
-						type: ADD_MESSAGES,
-						payload: action.payload,
-					});
-				}
-				default: {
-					return null;
-				}
+			if (action.type === ADD_USERS) {
+				socket.emit('action', { type: ADD_USERS, payload: action.payload });
+			}
+			if (action.type === ADD_MESSAGES) {
+				socket.emit('action', {
+					type: ADD_MESSAGES,
+					payload: action.payload,
+				});
 			}
 		}
 		return next(action);

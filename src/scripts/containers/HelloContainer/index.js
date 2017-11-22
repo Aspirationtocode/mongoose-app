@@ -27,15 +27,18 @@ class HelloContainer extends Component {
 		const { dispatch } = this.props;
 		const { currentName, currentSurname, currentAge } = this.state;
 		if (currentName && currentAge && currentSurname) {
-			db.postNewUserData({ currentName, currentAge, currentSurname }).then(response => {
-				const { statusText } = response;
-				if (statusText === 'User is already a chat member') {
-					dispatch(changeCurrentUserData(response.data));
-				} else {
-					dispatch(changeCurrentUserData(response.data));
-				}
-				dispatch(push('/chat'));
-			});
+			db
+				.postNewUserData({ currentName, currentAge, currentSurname })
+				.then(response => {
+					const { statusText } = response;
+					if (statusText === 'User is already a chat member') {
+						dispatch(changeCurrentUserData(response.data));
+					} else {
+						dispatch(changeCurrentUserData(response.data));
+					}
+					console.log('yeees');
+					dispatch(push('/chat'));
+				});
 		}
 	}
 	render() {

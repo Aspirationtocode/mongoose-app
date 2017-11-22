@@ -8,8 +8,11 @@ const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
 
+const mongodbURI =
+	'mongodb://aspiretocode:aspiretocode@ds113936.mlab.com:13936/chat-db';
 // connect to mongodb
-mongoose.connect('mongodb://localhost/chat', { useMongoClient: true });
+mongoose.connect(mongodbURI, { useMongoClient: true });
+
 mongoose.Promise = global.Promise;
 
 // set up static files
