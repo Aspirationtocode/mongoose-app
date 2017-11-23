@@ -17,7 +17,7 @@ mongoose.connect(mongodbURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 // set up static files
-app.use(express.static(`${__dirname}/../../dist`));
+// app.use(express.static(`${__dirname}/../../dist`));
 
 // use body-parser middleware
 app.use(bodyParser.json());
