@@ -103,5 +103,8 @@ module.exports = {
 		new CssSourcemapPlugin({ disable: isProd }),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
+		new webpack.DefinePlugin({
+			PRODUCTION: JSON.stringify(isProd),
+		}),
 	],
 };

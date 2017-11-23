@@ -1,27 +1,18 @@
 import axios from 'axios';
+import domen from './domen';
 
 const db = {
 	postNewUserData(userData) {
-		return axios.post(
-			'https://react-redux-mongodb-chat.herokuapp.com/api/newUser',
-			userData
-		);
+		return axios.post(`${domen}/api/newUser`, userData);
 	},
 	fetchUsers() {
-		return axios.get(
-			'https://react-redux-mongodb-chat.herokuapp.com/api/users'
-		);
+		return axios.get(`${domen}/api/users`);
 	},
 	postNewMessageData(messageData) {
-		return axios.post(
-			'https://react-redux-mongodb-chat.herokuapp.com/api/newMessage',
-			messageData
-		);
+		return axios.post(`${domen}/api/newMessage`, messageData);
 	},
 	fetchMessages() {
-		return axios.get(
-			'https://react-redux-mongodb-chat.herokuapp.com/api/messages'
-		);
+		return axios.get(`${domen}/api/messages`);
 	},
 };
 
