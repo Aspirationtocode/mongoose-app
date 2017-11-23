@@ -16,7 +16,7 @@ mongoose.connect(mongodbURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 // set up static files
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/../../dist`));
 
 // use body-parser middleware
 app.use(bodyParser.json());
@@ -31,17 +31,21 @@ app.use(cors({ origin: '*' }));
 // initialize routes
 app.use('/api', require('./routes/api'));
 
-// listen for requests
-http.listen(4000, () => {
-	console.log('now listening for requests');
-});
+const appStart = () => {
+	// listen for requests
+	http.listen(4000, () => {
+		console.log('now listening for requests');
+	});
 
-io.on('connection', socket => {
-	console.log('a user connected');
-	socket.on('disconnect', () => {
-		console.log('user disconnected');
+	io.on('connection', socket => {
+		console.log('a user connected');
+		socket.on('disconnect', () => {
+			console.log('user disconnected');
+		});
+		socket.on('action', action => {
+			io.emit('action', action);
+		});
 	});
-	socket.on('action', action => {
-		io.emit('action', action);
-	});
-});
+};
+
+module.exports = appStart;
