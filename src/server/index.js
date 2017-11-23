@@ -34,7 +34,7 @@ app.use('/api', require('./routes/api'));
 
 app.get('/', (req, res) => {
 	// res.sendFile(path.resolve(`${__dirname}/../../dist/index.html`));
-	res.send('hello world');
+	res.sendFile(path.resolve('dist/index.html'));
 });
 
 const appStart = () => {
