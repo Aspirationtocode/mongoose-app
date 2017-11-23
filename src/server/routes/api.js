@@ -4,6 +4,10 @@ const router = express.Router();
 const User = require('../models/user');
 const Message = require('../models/message');
 
+router.get('/', (req, res) => {
+	res.sendFile('index.html');
+});
+
 router.post('/newUser', (req, res) => {
 	const { currentName, currentAge, currentSurname } = req.body;
 	User.findOne(
