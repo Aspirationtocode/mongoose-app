@@ -17,7 +17,7 @@ mongoose.connect(mongodbURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 // set up static files
-// app.use(express.static(`${__dirname}/../../dist`));
+app.use(express.static(`${__dirname}/../../dist`));
 
 // use body-parser middleware
 app.use(bodyParser.json());
@@ -32,9 +32,9 @@ app.use(cors({ origin: '*' }));
 // initialize routes
 app.use('/api', require('./routes/api'));
 
-app.get('/', (req, res) => {
-	res.sendFile(path.resolve(`${__dirname}/../../dist/index.html`));
-});
+// app.get('/', (req, res) => {
+// 	res.sendFile(path.resolve(`${__dirname}/../../dist/index.html`));
+// });
 
 const appStart = () => {
 	// listen for requests
