@@ -33,10 +33,7 @@ app.use(cors({ origin: '*' }));
 app.use('/api', require('./routes/api'));
 
 app.get('/', (req, res) => {
-	// res.sendFile(path.resolve(`${__dirname}/../../dist/index.html`));
-	res.send(`
-		<!DOCTYPE html> <html lang=en> <head> <meta charset=UTF-8> <meta name=viewport content="width=device-width,initial-scale=1"> <meta http-equiv=X-UA-Compatible content="ie=edge"> <link rel="shortcut icon" href=http://virtualdjradio.com/images/chat.png /> <title>Chat-app</title> </head> <body> <div id=root></div> <script type="text/javascript" src="bundle.js"></script></body> </html>
-	`);
+	res.sendFile(path.resolve(`${__dirname}/../../dist/index.html`));
 });
 
 const appStart = () => {
