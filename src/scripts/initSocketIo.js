@@ -22,7 +22,7 @@ export function chatMiddleware() {
 }
 
 export default function(store) {
-	socket = io('http://192.168.0.75:4000');
+	socket = io('https://react-redux-mongodb-chat.herokuapp.com');
 
 	socket.on('action', action => {
 		store.dispatch(assign({}, action, { isSocketReaction: true }));
