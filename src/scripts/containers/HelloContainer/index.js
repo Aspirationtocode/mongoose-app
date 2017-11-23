@@ -36,7 +36,6 @@ class HelloContainer extends Component {
 					} else {
 						dispatch(changeCurrentUserData(response.data));
 					}
-					console.log('yeees');
 					dispatch(push('/chat'));
 				});
 		}

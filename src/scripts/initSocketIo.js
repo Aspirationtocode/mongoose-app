@@ -1,6 +1,7 @@
 import io from 'socket.io-client';
 import assign from 'object-assign';
 import { ADD_USERS, ADD_MESSAGES } from './constants';
+import domen from './domen';
 
 let socket = null;
 
@@ -22,7 +23,7 @@ export function chatMiddleware() {
 }
 
 export default function(store) {
-	socket = io('http://192.168.0.75:4000');
+	socket = io(domen);
 
 	socket.on('action', action => {
 		store.dispatch(assign({}, action, { isSocketReaction: true }));

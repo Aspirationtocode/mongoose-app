@@ -1,17 +1,18 @@
 import axios from 'axios';
+import domen from './domen';
 
 const db = {
 	postNewUserData(userData) {
-		return axios.post('http://192.168.0.75:4000/api/newUser', userData);
+		return axios.post(`${domen}/api/newUser`, userData);
 	},
 	fetchUsers() {
-		return axios.get('http://192.168.0.75:4000/api/users');
+		return axios.get(`${domen}/api/users`);
 	},
 	postNewMessageData(messageData) {
-		return axios.post('http://192.168.0.75:4000/api/newMessage', messageData);
+		return axios.post(`${domen}/api/newMessage`, messageData);
 	},
 	fetchMessages() {
-		return axios.get('http://192.168.0.75:4000/api/messages');
+		return axios.get(`${domen}/api/messages`);
 	},
 };
 

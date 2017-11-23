@@ -9,7 +9,7 @@
 	"scripts": {
 		"lint": "eslint ./src/scripts/**/*.js",
 		"dev": "webpack-dev-server --host 192.168.0.75",
-		"server": "nodemon ./src/server index.js",
+		"server": "nodemon server.js",
 		"prod": "rimraf ./dist/* && cross-env NODE_ENV=production webpack -p"
 	},
 	"author": "Evgeny Kulazhskiy",
@@ -66,6 +66,11 @@
 		"redux-devtools-extension": "^2.13.2",
 		"redux-localstorage": "^0.4.1",
 		"redux-thunk": "^2.2.0",
-		"socket.io-client": "^2.0.4"
+		"socket.io-client": "^2.0.4",
+		"body-parser": "^1.18.2",
+		"cors": "^2.8.4",
+		"express": "^4.16.2",
+		"mongoose": "^4.12.3",
+		"socket.io": "^2.0.4"
 	}
 }

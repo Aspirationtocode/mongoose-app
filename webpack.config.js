@@ -15,8 +15,15 @@ const autoprefixerBrowsers = [
 	`Safari >= ${browsers.safari}`,
 ].map(browser => `"${browser}"`);
 
-const autoprefixerLoader = `autoprefixer-loader?{browsers:[${autoprefixerBrowsers}]}`;
-const cssLoaders = ['style-loader', 'css-loader', autoprefixerLoader, 'stylus-loader'];
+const autoprefixerLoader = `autoprefixer-loader?{browsers:[${
+	autoprefixerBrowsers
+}]}`;
+const cssLoaders = [
+	'style-loader',
+	'css-loader',
+	autoprefixerLoader,
+	'stylus-loader',
+];
 
 const dist = path.join(__dirname, 'dist');
 const src = path.join(__dirname, 'src');
@@ -96,5 +103,8 @@ module.exports = {
 		new CssSourcemapPlugin({ disable: isProd }),
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NamedModulesPlugin(),
+		new webpack.DefinePlugin({
+			PRODUCTION: JSON.stringify(isProd),
+		}),
 	],
 };

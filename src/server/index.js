@@ -1,4 +1,5 @@
 const express = require('express');
+const path = require('path');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -16,7 +17,7 @@ mongoose.connect(mongodbURI, { useMongoClient: true });
 mongoose.Promise = global.Promise;
 
 // set up static files
-app.use(express.static('public'));
+app.use(express.static(`${__dirname}/../../dist`));
 
 // use body-parser middleware
 app.use(bodyParser.json());
@@ -31,17 +32,25 @@ app.use(cors({ origin: '*' }));
 // initialize routes
 app.use('/api', require('./routes/api'));
 
-// listen for requests
-http.listen(4000, () => {
-	console.log('now listening for requests');
+app.get('/', (req, res) => {
+	res.sendFile(path.resolve(`${__dirname}/../../dist/index.html`));
 });
 
-io.on('connection', socket => {
-	console.log('a user connected');
-	socket.on('disconnect', () => {
-		console.log('user disconnected');
+const appStart = () => {
+	// listen for requests
+	http.listen(process.env.PORT || 4000, () => {
+		console.log('now listening for requests');
 	});
-	socket.on('action', action => {
-		io.emit('action', action);
+
+	io.on('connection', socket => {
+		console.log('a user connected');
+		socket.on('disconnect', () => {
+			console.log('user disconnected');
+		});
+		socket.on('action', action => {
+			io.emit('action', action);
+		});
 	});
-});
+};
+
+module.exports = appStart;
