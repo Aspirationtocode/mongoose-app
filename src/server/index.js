@@ -33,7 +33,7 @@ app.use('/api', require('./routes/api'));
 
 const appStart = () => {
 	// listen for requests
-	http.listen(4000, () => {
+	http.listen(process.env.PORT || 4000, () => {
 		console.log('now listening for requests');
 	});
 
